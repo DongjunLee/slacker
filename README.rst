@@ -46,6 +46,12 @@ Examples
         slack.chat.post_message('#general', 'go through')
         slack.chat.post_message('#general', 'a single https connection')
 
+To Do
+============
+
+- add `Conversations API
+<https://api.slack.com/docs/conversations-api/>`_.
+
 Installation
 ============
 

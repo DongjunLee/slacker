@@ -30,7 +30,7 @@ DEFAULT_RETRIES = 0
 DEFAULT_WAIT = 20
 
 __all__ = ['Error', 'Response', 'BaseAPI', 'API', 'Auth', 'Users', 'Groups',
-           'Channels', 'Chat', 'IM', 'IncomingWebhook', 'Search', 'Files',
+           'Channels', 'Chat', 'Conversations', 'IM', 'IncomingWebhook', 'Search', 'Files',
            'Stars', 'Emoji', 'Presence', 'RTM', 'Team', 'Reactions', 'Pins',
            'UserGroups', 'UserGroupsUsers', 'MPIM', 'OAuth', 'DND', 'Bots',
            'FilesComments', 'Reminders', 'TeamProfile', 'UsersProfile',
@@ -435,6 +435,83 @@ class Chat(BaseAPI):
                              'user_auth_url': user_auth_url,
                          })
 
+
+class Conversations(BaseAPI):
+    """
+      - conversations.archive: Archives a conversation.
+      - conversations.close: Closes a direct message or multi-person direct message.
+      - conversations.create:Initiates a public or private channel-based conversation
+      - conversations.history: Fetches a conversation's history of messages and events.
+      - conversations.info: Retrieve information about a conversation.
+      - conversations.invite: Invites users to a channel.
+      - conversations.join: Joins an existing conversation.
+      - conversations.kick: Removes a user from a conversation.
+      - conversations.leave: Leaves a conversation.
+      - conversations.list: Lists all channels in a Slack team.
+      - conversations.members: Retrieve members of a conversation.
+      - conversations.open: Opens or resumes a direct message or multi-person direct message.
+      - conversations.rename: Renames a conversation.
+      - conversations.replies: Retrieve a thread of messages posted to a conversation
+      - conversations.setPurpose: Sets the purpose for a conversation.
+      - conversations.setTopic: Sets the topic for a conversation.
+      - conversations.unarchive: Reverses conversation archival.
+    """
+
+    def archive(self):
+        raise NotImplementedError("To be implemented")
+
+    def close(self):
+        raise NotImplementedError("To be implemented")
+
+    def create(self):
+        raise NotImplementedError("To be implemented")
+
+    def history(self):
+        raise NotImplementedError("To be implemented")
+
+    def info(self):
+        raise NotImplementedError("To be implemented")
+
+    def invite(self):
+        raise NotImplementedError("To be implemented")
+
+    def join(self):
+        raise NotImplementedError("To be implemented")
+
+    def kick(self):
+        raise NotImplementedError("To be implemented")
+
+    def leave(self):
+        raise NotImplementedError("To be implemented")
+
+    def list(self):
+        raise NotImplementedError("To be implemented")
+
+    def members(self):
+        raise NotImplementedError("To be implemented")
+
+    def open(self, channel=None, return_im=None, users=None):
+        return self.post('conversations.open',
+                         data={
+                             'channel': channel,
+                             'return_im': return_im,
+                             'users': users
+                         })
+
+    def rename(self):
+        raise NotImplementedError("To be implemented")
+
+    def replies(self):
+        raise NotImplementedError("To be implemented")
+
+    def setPurpose(self):
+        raise NotImplementedError("To be implemented")
+
+    def setTopic(self):
+        raise NotImplementedError("To be implemented")
+
+    def unarchive(self):
+        raise NotImplementedError("To be implemented")
 
 class IM(BaseAPI):
     def list(self):
@@ -1032,6 +1109,7 @@ class Slacker(object):
         self.search = Search(**api_args)
         self.groups = Groups(**api_args)
         self.channels = Channels(**api_args)
+        self.conversations = Conversations(**api_args)
         self.presence = Presence(**api_args)
         self.reminders = Reminders(**api_args)
         self.reactions = Reactions(**api_args)
