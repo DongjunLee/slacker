@@ -49,8 +49,7 @@ Examples
 To Do
 ============
 
-- add `Conversations API
-<https://api.slack.com/docs/conversations-api/>`_.
+- add `Conversations API<https://api.slack.com/docs/conversations-api/>`_.
 
 Installation
 ============
